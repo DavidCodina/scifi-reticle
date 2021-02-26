@@ -13,17 +13,8 @@ function animateCrosshair(e){
   const eventDataDiv       = document.querySelector('#event-data');
   eventDataDiv.textContent = e.type;
 
-  let x = 0;
-  let y = 0;
-
-  if (e.type === 'touchstart'){
-    x = e.touches[0].clientX;
-    y = e.touches[0].clientY;
-  } else {
-    x = e.pageX;
-    y = e.pageY - window.scrollY;
-  }
-
+  const x                             = e.pageX;
+  const y                             = e.pageY - window.scrollY;
   crosshairContainer.style.transition = 'all 0.35s linear';
   crosshairContainer.style.transform  = `translate(${x}px, ${y}px)`;
   crosshairContainer.style.opacity    = '1';
@@ -31,7 +22,6 @@ function animateCrosshair(e){
   sciFiCircle.style.opacity           = '1';
 
 
-  //https://stackoverflow.com/questions/708895/how-to-set-the-style-webkit-transform-dynamically-using-javascript
   //https://stackoverflow.com/questions/35186768/safari-css-bug-animation-rotation-direction-incorrect
   if (x > previousPosition.x){
     crosshairBorders.style.transform = 'rotate(179deg) scale(1.5)';
@@ -60,6 +50,60 @@ function animateCrosshair(e){
     crosshairBorders.style.transition      = "";
   }, 550);
 }
+
+
+
+// The old version  explicitly checked for touch, bu that's not actually necessary.
+// function animateCrosshair(e){
+//   const eventDataDiv       = document.querySelector('#event-data');
+//   eventDataDiv.textContent = e.type;
+//
+//   let x = 0;
+//   let y = 0;
+//
+//   if (e.type === 'touchstart'){
+//     x = e.touches[0].clientX;
+//     y = e.touches[0].clientY;
+//   } else {
+//     x = e.pageX;
+//     y = e.pageY - window.scrollY;
+//   }
+//
+//   crosshairContainer.style.transition = 'all 0.35s linear';
+//   crosshairContainer.style.transform  = `translate(${x}px, ${y}px)`;
+//   crosshairContainer.style.opacity    = '1';
+//   sciFiCircle.style.transition        = 'none';
+//   sciFiCircle.style.opacity           = '1';
+//
+//
+//   //https://stackoverflow.com/questions/35186768/safari-css-bug-animation-rotation-direction-incorrect
+//   if (x > previousPosition.x){
+//     crosshairBorders.style.transform = 'rotate(179deg) scale(1.5)';
+//     setTimeout(function(){
+//       crosshairBorders.style.transform = 'rotate(179deg) scale(1)';
+//     }, 200);
+//   } else {
+//     crosshairBorders.style.transform  = 'rotate(-179deg) scale(1.5)';
+//     setTimeout(function(){
+//       crosshairBorders.style.transform = 'rotate(-179deg) scale(1)';
+//     }, 200);
+//   }
+//
+//   previousPosition.x = x;
+//   previousPosition.y = y;
+//
+//   setTimeout(function(){
+//     crosshairContainer.style.transition    = 'all 2s linear';
+//     crosshairContainer.style.opacity       = '0.15';
+//     sciFiCircle.style.transition           = 'opacity 2s linear';
+//     sciFiCircle.style.opacity              = '';
+//
+//     crosshairBorders.style.transition      = "none";
+//     crosshairBorders.style.transform       = 'rotate(0deg)';
+//     void(crosshairBorders.offsetHeight); //force reflow.
+//     crosshairBorders.style.transition      = "";
+//   }, 550);
+// }
 
 
 ////////////////////////////////////////////////////////////////////////////////
