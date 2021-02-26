@@ -82,14 +82,23 @@ function animateCrosshair(e){
 //   animateCrosshair(e);
 // });
 //
+///////////////////////////////////////
+//
+//  You could do this, but that would then permanently remove the click handler,
+//  which would not be ideal for devices that can use both clicks and touches.
+//
+//
+//  function removeClickHandler(){
+//    document.querySelector('BODY').removeEventListener('click', animateCrosshair);
+//    setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
+//  }
+//
+//  document.addEventListener('touchstart', removeClickHandler);
+//
 ////////////////////////////////////////////////////////////////////////////////
 
 
-function removeClickHandler(){
-  document.querySelector('BODY').removeEventListener('click', animateCrosshair);
-  setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
-}
-document.addEventListener('touchstart', removeClickHandler);
+
 
 
 document.querySelector('BODY').addEventListener('touchstart', function(e){
