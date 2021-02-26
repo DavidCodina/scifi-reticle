@@ -43,7 +43,7 @@ function animateCrosshair(e){
     crosshairBorders.style.transform    = 'rotate(0deg)';
     void(crosshairBorders.offsetHeight); //force reflow.
     crosshairBorders.style.transition   = "";
-  }, 1550);
+  }, 550);
 }
 
 
@@ -78,15 +78,19 @@ function animateCrosshair(e){
 // document.addEventListener('click', animateCrosshair);
 
 
-document.addEventListener('touchstart', function(e){
-  e.preventDefault();
-  animateCrosshair(e);
-}, false);
 
-document.addEventListener('click', function(e){
+// https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
+// Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
+// document.addEventListener('touchstart', (event) => event.preventDefault());
+
+document.querySelector('BODY').addEventListener('touchstart', function(e){
   e.preventDefault();
   animateCrosshair(e);
-}, false);
+});
+
+document.querySelector('BODY').addEventListener('click', function(e){
+  animateCrosshair(e);
+});
 
 
 

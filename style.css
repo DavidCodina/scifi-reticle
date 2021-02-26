@@ -17,8 +17,10 @@ html {
 
 body {
   background-color: var(--body-color);
-  overflow-x:hidden; /* Safari needs this to prevent horizontal scrolling. */
   color: #64ffda;
+  min-height: 100vh; /* Add to template */
+  width: 100%;
+  overflow-x:hidden; /* Safari needs this to prevent horizontal scrolling. */
 }
 
 .transition-none * {
