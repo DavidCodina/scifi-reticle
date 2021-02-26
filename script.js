@@ -11,9 +11,12 @@ const previousPosition   = { x: 0, y: 0 };
 
 
 function animateCrosshair(e){
-  const eventDataDiv = document.querySelector('#event-data');
+
+  const eventDataDiv       = document.querySelector('#event-data');
   eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
+
+
 
 
   crosshairContainer.style.transition = 'all 0.35s linear';
@@ -84,11 +87,13 @@ function animateCrosshair(e){
 // document.addEventListener('touchstart', (event) => event.preventDefault());
 
 document.querySelector('BODY').addEventListener('touchstart', function(e){
+  console.log("touchstart");
   e.preventDefault();
   animateCrosshair(e);
 });
 
 document.querySelector('BODY').addEventListener('click', function(e){
+  console.log("click");
   animateCrosshair(e);
 });
 
