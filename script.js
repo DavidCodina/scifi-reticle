@@ -61,7 +61,7 @@ function animateCrosshair(e){
 
 
 // Solution 2:
-// document.addEventListener('touchmove', function(){
+// document.addEventListener('touchmove', function(e){
 //   e.preventDefault();
 //   animateCrosshair(e);
 // }, false);
@@ -69,13 +69,22 @@ function animateCrosshair(e){
 // document.addEventListener('click', animateCrosshair, false);
 
 
+// Solution 3:
+// document.addEventListener('touchstart', function(){
+//   e.preventDefault();
+//   animateCrosshair(e);
+// });
+//
+// document.addEventListener('click', animateCrosshair);
 
-document.addEventListener('touchstart', function(){
+
+document.addEventListener('touchstart', function(e){
   e.preventDefault();
   animateCrosshair(e);
 });
 
 document.addEventListener('click', animateCrosshair);
+
 
 
 
