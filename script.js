@@ -1,12 +1,12 @@
-/* =============================================================================
-                            initialization
-============================================================================= */
-
-
 const crosshairContainer = document.querySelector('#crosshair-container');
 const crosshairBorders   = crosshairContainer.querySelector('.borders');
 const sciFiCircle        = crosshairContainer.querySelector('#scifi-circle-svg');
 const previousPosition   = { x: 0, y: 0 };
+
+
+/* =============================================================================
+
+============================================================================= */
 
 
 function animateCrosshair(e){
@@ -18,7 +18,6 @@ function animateCrosshair(e){
   sciFiCircle.style.transition        = 'none';
   sciFiCircle.style.opacity           = '1';
 
-
   // https://stackoverflow.com/questions/35186768/safari-css-bug-animation-rotation-direction-incorrect
   if (x > previousPosition.x){
     crosshairBorders.style.transform                        = 'rotate(179deg) scale(1.5)';
@@ -28,10 +27,8 @@ function animateCrosshair(e){
     setTimeout(function(){ crosshairBorders.style.transform = 'rotate(-179deg) scale(1)'; }, 200);
   }
 
-
   previousPosition.x = x;
   previousPosition.y = y;
-
 
   setTimeout(function(){
     crosshairContainer.style.transition    = 'all 2s linear';
@@ -45,6 +42,11 @@ function animateCrosshair(e){
     crosshairBorders.style.transition      = "";
   }, 550);
 }
+
+
+/* =============================================================================
+                            initialization
+============================================================================= */
 
 
 document.querySelector('MAIN').addEventListener('click', animateCrosshair);
