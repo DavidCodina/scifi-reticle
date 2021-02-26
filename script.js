@@ -11,6 +11,11 @@ const previousPosition   = { x: 0, y: 0 };
 
 
 function animateCrosshair(e){
+  const eventDataDiv = document.querySelector('#event-data');
+  eventDataDiv.textContent = '';
+  eventDataDiv.textContent = e.type;
+
+
   crosshairContainer.style.transition = 'all 0.35s linear';
   crosshairContainer.style.transform  = `translate(${e.pageX}px, ${e.pageY - window.scrollY}px)`;
   crosshairContainer.style.opacity    = '1';
