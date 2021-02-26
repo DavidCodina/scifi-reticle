@@ -74,7 +74,7 @@ function animateCrosshair(e){
 // });
 
 
-function removeClickHanlder(){
+function removeClickHandler(){
   document.querySelector('BODY').removeEventListener('click', animateCrosshair);
   setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
 }
