@@ -14,20 +14,22 @@ function animateCrosshair(e){
   const eventDataDiv       = document.querySelector('#event-data');
   eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
+  console.log(e.type);
 
-
+  let evenType = e.type;
   let x = 0;
   let y = 0;
 
 
 
-  setTimeout(function(e){
-    if (e.type === 'touchstart'){
+  setTimeout(function(eventType){
+    //https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientX
+    if (eventType === 'touchstart'){
       x = e.touches[0].clientX;
       y = e.touches[0].clientY;
 
       eventDataDiv.textContent = x + ", " + y;
-    }
+    } 
   }, 2000);
 
 
@@ -90,17 +92,17 @@ function animateCrosshair(e){
 ////////////////////////////////////////////////////////////////////////////////
 
 
-function removeClickHandler(){
-  document.querySelector('BODY').removeEventListener('click', animateCrosshair);
-  setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
-}
-document.addEventListener('touchstart', removeClickHandler);
-
-
-document.querySelector('BODY').addEventListener('touchstart', function(e){
-  e.preventDefault();
-  animateCrosshair(e);
-});
+// function removeClickHandler(){
+//   document.querySelector('BODY').removeEventListener('click', animateCrosshair);
+//   setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
+// }
+// document.addEventListener('touchstart', removeClickHandler);
+//
+//
+// document.querySelector('BODY').addEventListener('touchstart', function(e){
+//   e.preventDefault();
+//   animateCrosshair(e);
+// });
 
 document.querySelector('BODY').addEventListener('click', animateCrosshair);
 
