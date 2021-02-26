@@ -15,7 +15,7 @@ function animateCrosshair(e){
   eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
 
-  setTimeout(function(){
+  setTimeout(function(e){
     if (e.originalEvent.touches){
       let touch = e.originalEvent.touches[0];
       eventDataDiv.textContent = touch.pageX + ", " + touch.pagY;
