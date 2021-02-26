@@ -103,6 +103,7 @@ function animateCrosshair(e){
 
 document.querySelector('BODY').addEventListener('touchstart', function(e){
   e.preventDefault(); //Won't work, but doesn't hurt.
+  e.stopPropagation(); 
   animateCrosshair(e);
 });
 
