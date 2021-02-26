@@ -74,15 +74,19 @@ function animateCrosshair(e){
 // });
 
 
+function removeClickHanlder(){
+  document.querySelector('BODY').removeEventListener('click', animateCrosshair);
+  setTimeout(function(){ document.removeEventListener('touchstart', removeClickHandler); }, 1000);
+}
+document.addEventListener('touchstart', removeClickHandler);
 
-document.querySelector('BODY').addEventListener('touchmove', function(e){
+
+document.querySelector('BODY').addEventListener('touchstart', function(e){
   e.preventDefault();
   animateCrosshair(e);
 });
 
-document.querySelector('BODY').addEventListener('click', function(e){
-  animateCrosshair(e);
-});
+document.querySelector('BODY').addEventListener('click', animateCrosshair);
 
 
 
