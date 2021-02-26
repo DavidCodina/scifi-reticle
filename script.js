@@ -21,16 +21,23 @@ function animateCrosshair(e){
   let y = 0;
 
 
+  if (eventType === 'touchstart'){
+    x = e.touches[0].clientX;
+    y = e.touches[0].clientY;
+    eventDataDiv.textContent = x + ", " + y;
+  }
 
-  setTimeout(function(eventType){
-    //https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientX
-    if (eventType === 'touchstart'){
-      x = e.touches[0].clientX;
-      y = e.touches[0].clientY;
 
-      eventDataDiv.textContent = x + ", " + y;
-    }
-  }, 2000);
+
+  // setTimeout(function(eventType){
+  //   //https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientX
+  //   if (eventType === 'touchstart'){
+  //     x = e.touches[0].clientX;
+  //     y = e.touches[0].clientY;
+  //
+  //     eventDataDiv.textContent = x + ", " + y;
+  //   }
+  // }, 2000);
 
 
 
