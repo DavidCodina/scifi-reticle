@@ -10,8 +10,8 @@ const previousPosition   = { x: 0, y: 0 };
 
 
 function animateCrosshair(e){
-  // const eventDataDiv       = document.querySelector('#event-data');
-  // eventDataDiv.textContent = e.type;
+  const eventDataDiv       = document.querySelector('#event-data');
+  eventDataDiv.textContent = e.type;
 
   let x = 0;
   let y = 0;
