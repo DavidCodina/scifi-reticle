@@ -57,6 +57,10 @@ function animateCrosshair(e){
 // https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
 
 // Solution 1:
+// document.addEventListener('click', animateCrosshair, false);
+
+
+// Solution 2:
 // document.addEventListener('touchmove', function(){
 //   e.preventDefault();
 //   animateCrosshair(e);
@@ -66,13 +70,15 @@ function animateCrosshair(e){
 
 
 
-
-// document.addEventListener('touchmove', function(){
-//   e.preventDefault();
-//   animateCrosshair(e);
-// }, false);
+document.addEventListener('touchstart', function(){
+  e.preventDefault();
+  animateCrosshair(e);
+}, false);
 
 document.addEventListener('click', animateCrosshair, false);
+
+
+
 
 
 
