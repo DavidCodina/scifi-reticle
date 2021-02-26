@@ -41,12 +41,21 @@ function animateCrosshair(e){
 
   if (x > previousPosition.x){
     eventDataDiv.textContent = x + ", " + y + " (should rotate right)";
-    crosshairBorders.style.transform                        = 'rotate(180deg) scale(1.5)';
-    setTimeout(function(){ crosshairBorders.style.transform = 'rotate(180deg) scale(1)'; }, 200);
+    //https://stackoverflow.com/questions/708895/how-to-set-the-style-webkit-transform-dynamically-using-javascript
+    crosshairBorders.style.transform       = 'rotate(180deg) scale(1.5)';
+    crosshairBorders.style.webkitTransform = 'rotate(180deg) scale(1.5)';
+    setTimeout(function(){
+      crosshairBorders.style.transform       = 'rotate(180deg) scale(1)';
+      crosshairBorders.style.webkitTransform = 'rotate(180deg) scale(1)';
+    }, 200);
   } else {
     eventDataDiv.textContent = x + ", " + y + " (should rotate left)";
-    crosshairBorders.style.transform                        = 'rotate(-180deg) scale(1.5)';
-    setTimeout(function(){ crosshairBorders.style.transform = 'rotate(-180deg) scale(1)'; }, 200);
+    crosshairBorders.style.transform       = 'rotate(-180deg) scale(1.5)';
+    crosshairBorders.style.webkitTransform = 'rotate(-180deg) scale(1.5)';
+    setTimeout(function(){
+      crosshairBorders.style.transform       = 'rotate(-180deg) scale(1)';
+      crosshairBorders.style.webkitTransform = 'rotate(-180deg) scale(1.5)';
+    }, 200);
   }
 
   previousPosition.x = x;
@@ -60,10 +69,11 @@ function animateCrosshair(e){
     sciFiCircle.style.transition        = 'opacity 2s linear';
     sciFiCircle.style.opacity           = '';
 
-    crosshairBorders.style.transition   = "none";
-    crosshairBorders.style.transform    = 'rotate(0deg)';
+    crosshairBorders.style.transition      = "none";
+    crosshairBorders.style.transform       = 'rotate(0deg)';
+    crosshairBorders.style.webkitTransform = 'rotate(0deg)';
     void(crosshairBorders.offsetHeight); //force reflow.
-    crosshairBorders.style.transition   = "";
+    crosshairBorders.style.transition      = "";
   }, 550);
 }
 
