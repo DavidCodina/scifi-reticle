@@ -64,6 +64,9 @@ function animateCrosshair(e){
 
 ////////////////////////////////////////////////////////////////////////////////
 //
+//  Prevent click when touchstart is fired.
+//
+//
 //  https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
 //  Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
 //  document.addEventListener('touchstart', (event) => event.preventDefault());
@@ -101,7 +104,10 @@ function animateCrosshair(e){
 //   document.querySelector('MAIN').addEventListener('click', animateCrosshair);
 //
 //
-//  That said clicks will still work on touch devices.
+//  That said clicks will still work on touch devices, so there shouldn't be a need
+//  to double bind like this. At least not in this case.
+//  Also if you use a touchstart event listener it will also trigger when the user
+//  tries to scroll, which is undesired.
 //
 ///////////////////////////////////////
 //
@@ -118,14 +124,6 @@ function animateCrosshair(e){
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-// document.querySelector('MAIN').addEventListener('touchstart', function(e){
-//   e.preventDefault();
-//   animateCrosshair(e);
-// });
 
 document.querySelector('MAIN').addEventListener('click', animateCrosshair);
 
