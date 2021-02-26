@@ -18,12 +18,10 @@ function animateCrosshair(e){
   sciFiCircle.style.opacity           = '1';
 
   if (e.pageX > previousPosition.x){
-    alert("Case 1: ", e.pageX);
-    crosshairBorders.style.transform = 'rotate(180deg) scale(1.5)'; //could scale it as well.
+    crosshairBorders.style.transform                        = 'rotate(180deg) scale(1.5)';
     setTimeout(function(){ crosshairBorders.style.transform = 'rotate(180deg) scale(1)'; }, 200);
   } else {
-    alert("Case 2: ",e.pageX);
-    crosshairBorders.style.transform = 'rotate(-180deg) scale(1.5)';
+    crosshairBorders.style.transform                        = 'rotate(-180deg) scale(1.5)';
     setTimeout(function(){ crosshairBorders.style.transform = 'rotate(-180deg) scale(1)'; }, 200);
   }
 
@@ -40,7 +38,7 @@ function animateCrosshair(e){
     crosshairBorders.style.transform    = 'rotate(0deg)';
     void(crosshairBorders.offsetHeight); //force reflow.
     crosshairBorders.style.transition   = "";
-  }, 550);
+  }, 1550);
 }
 
 
