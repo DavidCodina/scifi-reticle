@@ -58,23 +58,31 @@ pre {
 }
 
 #intro-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 40%;
-  left: 0;
-  transform: translateY(-50%) scale(0);
+  left: 50%;
+  min-height: 214px;
   width: 100%;
-  opacity: 1;
-  transition: opacity 0.5s linear;
-  animation-fill-mode: forwards;
+  max-width: 400px;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  background-image: url("assets/scifi-container.png");
+  background-repeat: no-repeat;
+  background-position: center center;
   animation: zoom-in-and-disappear 4s ease-in-out 0.5s;
+  animation-fill-mode: forwards;
 }
 
 @keyframes zoom-in-and-disappear {
-  from { transform: translateY(-50%) scale(0); }
-  15%  { transform: translateY(-50%) scale(1.5); }
-  20%  { transform: translateY(-50%) scale(1); opacity: 1; }
-  75%  { transform: translateY(-50%) scale(1); opacity: 1; }
-  to   { transform: translateY(-50%) scale(1); opacity: 0; }
+  from { transform: translate(-50%, -50%) scale(0); }
+  15%  { transform: translate(-50%, -50%) scale(1.5); }
+  20%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  75%  { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  to   { transform: translate(-50%, -50%) scale(1); opacity: 0; }
 }
 
 
