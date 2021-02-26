@@ -16,7 +16,7 @@ function animateCrosshair(e){
   eventDataDiv.textContent = e.type;
   console.log(e.type);
 
-  let evenType = e.type;
+  let eventType = e.type;
   let x = 0;
   let y = 0;
 
