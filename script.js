@@ -12,43 +12,34 @@ const previousPosition   = { x: 0, y: 0 };
 
 function animateCrosshair(e){
   const eventDataDiv       = document.querySelector('#event-data');
-  eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
-  console.log(e.type);
+  //console.log(e.type);
 
-  let eventType = e.type;
+  //let eventType = e.type;
   let x = 0;
   let y = 0;
 
 
-  if (eventType === 'touchstart'){
+  if (e.type === 'touchstart'){
     x = e.touches[0].clientX;
     y = e.touches[0].clientY;
-    eventDataDiv.textContent = x + ", " + y;
+  } else {
+    x = e.pageX;
+    y = e.pageY - window.scrollY;
   }
 
-
-
-  // setTimeout(function(eventType){
-  //   //https://developer.mozilla.org/en-US/docs/Web/API/Touch/clientX
-  //   if (eventType === 'touchstart'){
-  //     x = e.touches[0].clientX;
-  //     y = e.touches[0].clientY;
-  //
-  //     eventDataDiv.textContent = x + ", " + y;
-  //   }
-  // }, 2000);
+  eventDataDiv.textContent = x + ", " + y;
 
 
 
 
   crosshairContainer.style.transition = 'all 0.35s linear';
-  crosshairContainer.style.transform  = `translate(${e.pageX}px, ${e.pageY - window.scrollY}px)`;
+  crosshairContainer.style.transform  = `translate(${x}px, ${y}px)`;
   crosshairContainer.style.opacity    = '1';
   sciFiCircle.style.transition        = 'none';
   sciFiCircle.style.opacity           = '1';
 
-  if (e.pageX > previousPosition.x){
+  if (x > previousPosition.x){
     crosshairBorders.style.transform                        = 'rotate(180deg) scale(1.5)';
     setTimeout(function(){ crosshairBorders.style.transform = 'rotate(180deg) scale(1)'; }, 200);
   } else {
@@ -56,8 +47,8 @@ function animateCrosshair(e){
     setTimeout(function(){ crosshairBorders.style.transform = 'rotate(-180deg) scale(1)'; }, 200);
   }
 
-  previousPosition.x = e.pageX;
-  previousPosition.y = e.pageY;
+  previousPosition.x = x;
+  previousPosition.y = y;
 
   setTimeout(function(){
     crosshairContainer.style.transition = 'all 2s linear';
