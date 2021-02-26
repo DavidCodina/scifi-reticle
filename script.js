@@ -93,12 +93,15 @@ function animateCrosshair(e){
 //
 //  However, this DOES work!
 //
-// document.querySelector('MAIN').addEventListener('touchstart', function(e){
-//   e.preventDefault();
-//   animateCrosshair(e);
-// });
+//    document.querySelector('MAIN').addEventListener('touchstart', function(e){
+//      e.preventDefault();
+//      animateCrosshair(e);
+//    });
 //
-// document.querySelector('MAIN').addEventListener('click', animateCrosshair);
+//   document.querySelector('MAIN').addEventListener('click', animateCrosshair);
+//
+//
+//  That said clicks will still work on touch devices.
 //
 ///////////////////////////////////////
 //
@@ -119,10 +122,10 @@ function animateCrosshair(e){
 
 
 
-document.querySelector('MAIN').addEventListener('touchstart', function(e){
-  e.preventDefault();
-  animateCrosshair(e);
-});
+// document.querySelector('MAIN').addEventListener('touchstart', function(e){
+//   e.preventDefault();
+//   animateCrosshair(e);
+// });
 
 document.querySelector('MAIN').addEventListener('click', animateCrosshair);
 
