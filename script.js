@@ -58,7 +58,7 @@ function animateCrosshair(e){
 
 document.ontouchmove = function(e){
   e.preventDefault();
-  // e.stopPropagation();
+  e.stopPropagation();
 };
 
 
