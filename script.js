@@ -81,9 +81,9 @@ function animateCrosshair(e){
 document.addEventListener('touchstart', function(e){
   e.preventDefault();
   animateCrosshair(e);
-});
+}, false);
 
-document.addEventListener('click', animateCrosshair);
+document.addEventListener('click', animateCrosshair, false);
 
 
 
