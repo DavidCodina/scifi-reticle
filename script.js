@@ -15,10 +15,18 @@ function animateCrosshair(e){
   eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
 
+
+  let x = 0;
+  let y = 0;
+
+
+
   setTimeout(function(e){
-    if (e.originalEvent.touches){
-      let touch = e.originalEvent.touches[0];
-      eventDataDiv.textContent = touch.pageX + ", " + touch.pagY;
+    if (e.type === 'touchstart'){
+      x = e.touches[0].clientX;
+      y = e.touches[0].clientY;
+
+      eventDataDiv.textContent = x + ", " + y;
     }
   }, 2000);
 
