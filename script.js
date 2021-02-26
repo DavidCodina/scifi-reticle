@@ -11,10 +11,16 @@ const previousPosition   = { x: 0, y: 0 };
 
 
 function animateCrosshair(e){
-
   const eventDataDiv       = document.querySelector('#event-data');
   eventDataDiv.textContent = '';
   eventDataDiv.textContent = e.type;
+
+  setTimeout(function(){
+    if (e.originalEvent.touches){
+      let touch = e.originalEvent.touches[0];
+      eventDataDiv.textContent = touch.pageX + ", " + touch.pagY;
+    }
+  }, 2000);
 
 
 
@@ -53,17 +59,17 @@ function animateCrosshair(e){
 
 
 
-
-
-// https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
-// https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
-// https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
-
-
-// https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
-// Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
-// document.addEventListener('touchstart', (event) => event.preventDefault());
-// This this won't work:
+////////////////////////////////////////////////////////////////////////////////
+//
+//  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+//  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
+//  https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
+//
+//  https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
+//  Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
+//  document.addEventListener('touchstart', (event) => event.preventDefault());
+//  This this won't work:
+//
 // document.querySelector('BODY').addEventListener('touchstart', function(e){
 //   e.preventDefault();
 //   animateCrosshair(e);
@@ -72,6 +78,8 @@ function animateCrosshair(e){
 // document.querySelector('BODY').addEventListener('click', function(e){
 //   animateCrosshair(e);
 // });
+//
+////////////////////////////////////////////////////////////////////////////////
 
 
 function removeClickHandler(){
