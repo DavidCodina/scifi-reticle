@@ -55,13 +55,13 @@ function animateCrosshair(e){
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
 // https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
-document.ontouchmove = function(e){
+document.addEventListener('touchmove', function(){
   e.preventDefault();
+  //e.stopPropagation();
   animateCrosshair(e);
-};
+}, false);
 
-
-document.onclick = animateCrosshair;
+document.addEventListener('click', animateCrosshair, false);
 
 
 
