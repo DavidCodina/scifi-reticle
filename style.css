@@ -60,12 +60,13 @@ pre {
 #intro-message {
   position: absolute;
   top: 40%;
+  left: 0;
   transform: translateY(-50%) scale(0);
   width: 100%;
   opacity: 1;
   transition: opacity 0.5s linear;
-  animation: zoom-in-and-disappear 4s ease-in-out 0.5s;
   animation-fill-mode: forwards;
+  animation: zoom-in-and-disappear 4s ease-in-out 0.5s;
 }
 
 @keyframes zoom-in-and-disappear {
