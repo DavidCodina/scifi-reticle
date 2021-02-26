@@ -64,23 +64,41 @@ function animateCrosshair(e){
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-//  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
-//  https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
-//  https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
-//
 //  https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
 //  Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
 //  document.addEventListener('touchstart', (event) => event.preventDefault());
 //  This this won't work:
 //
-// document.querySelector('BODY').addEventListener('touchstart', function(e){
+//    document.addEventListener('touchstart', function(e){
+//        e.preventDefault();
+//      animateCrosshair(e);
+//    });
+//
+//   document.addEventListener('click', function(e){
+//     animateCrosshair(e);
+//   });
+//
+//
+//   Nor will this:
+//
+//    document.querySelector('BODY').addEventListener('touchstart', function(e){
+//        e.preventDefault();
+//      animateCrosshair(e);
+//    });
+//
+//   document.querySelector('BODY').addEventListener('click', function(e){
+//     animateCrosshair(e);
+//   });
+//
+//
+//  However, this DOES work!
+//
+// document.querySelector('MAIN').addEventListener('touchstart', function(e){
 //   e.preventDefault();
 //   animateCrosshair(e);
 // });
 //
-// document.querySelector('BODY').addEventListener('click', function(e){
-//   animateCrosshair(e);
-// });
+// document.querySelector('MAIN').addEventListener('click', animateCrosshair);
 //
 ///////////////////////////////////////
 //
@@ -102,7 +120,7 @@ function animateCrosshair(e){
 
 
 document.querySelector('MAIN').addEventListener('touchstart', function(e){
-  //e.preventDefault(); //Won't work, but doesn't hurt.
+  e.preventDefault();
   animateCrosshair(e);
 });
 
