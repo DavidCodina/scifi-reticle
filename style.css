@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+
+:root {
+  --body-color:    var(--navy);
+  --navy:          rgb(10,25,47);
+  --primary-color: #64ffda;
+  --dot-color:  rgb(0,65, 28);
+}
+
+* { cursor: url(assets/dot-cursor.png), auto; }
+
+html {
+  /* Safari needs this to prevent horizontal scrolling. */
+  max-width: 100%;
+  overflow-x:hidden;
+}
+
+body {
+  background-color: var(--body-color);
+  overflow-x:hidden; /* Safari needs this to prevent horizontal scrolling. */
+  color: #64ffda;
+}
+
+.transition-none * {
+  -webkit-transition: none !important;
+     -moz-transition: none !important;
+      -ms-transition: none !important;
+       -o-transition: none !important;
+          transition: none !important;
+}
+
+p {
+  margin-bottom: 25px;
+  line-height: 1.75;
+}
+
+figure {
+  display:block;
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  width: 90%;
+  margin: 0 auto 50px auto;
+  font-size: 14px;
+  color: #333;
+  background-color: rgb(255,255,255);
+  border: 2px solid #333;
+  border-radius: 15px;
+  overflow:scroll;
+}
+
+#intro-message {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s linear;
+}
+
+
+/* =========================
+   .dotted-background-*
+========================= */
+
+
+.dotted-background-1 {
+  background: linear-gradient(90deg, var(--body-color) 25px, transparent 1%) center,
+              linear-gradient(var(--body-color) 25px, transparent 1%) center, var(--dot-color);
+  background-size: 26px 26px;
+}
+
+.dotted-background-2 {
+  background: linear-gradient(90deg, var(--body-color) 5px, transparent 1%) center,
+              linear-gradient(var(--body-color) 5px, transparent 1%) center, var(--dot-color);
+  background-size: 6px 6px;
+}
+
+
+/* =========================
+  .underline-from-left
+========================= */
+
+
+.underline-from-left,
+a.underline-from-left {
+  position: relative;
+  color: var(--primary-color);
+  cursor:pointer;
+  text-decoration:none;
+}
+
+.underline-from-left::before {
+  content: '';
+  position: absolute;
+  bottom: -3px; /* Change as needed */
+  left: 0;
+  right: 0;
+  height: 1px;
+
+  background-color: var(--primary-color);
+  transform-origin: bottom right;
+  transform: scaleX(0);
+  transition: transform 0.15s linear;
+}
+
+.underline-from-left:hover::before {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+
+/* =============================================================================
+
+============================================================================= */
+
+
+.bordered {
+  position: relative;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  color: var(--primary-color);
+  background-color: rgba(100, 255, 218, 0.1);
+}
+
+.bordered::before, .bordered::after,
+.bordered span::before, .bordered span::after {
+  display: block;
+  content: "";
+  width: 6px;
+  height: 6px;
+  position: absolute;
+}
+
+.bordered::before {
+  top: 0px;
+  left: 0px;
+  border-top: 1px solid  var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+}
+
+.bordered::after {
+  top: 0px;
+  right: 0px;
+  border-top: 1px solid var(--primary-color);
+  border-right: 1px solid var(--primary-color);
+}
+
+.bordered span::before {
+  bottom: 0px;
+  left:  0px;
+  border-bottom: 1px solid var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+}
+
+.bordered span::after {
+  bottom: 0px;
+  right: 0px;
+  border-bottom: 1px solid var(--primary-color);
+  border-right: 1px solid var(--primary-color);
+}
+
+
+/* =============================================================================
+
+============================================================================= */
+
+
+#crosshair-container {
+  position: fixed;
+  top: -22px; /* Would be 25s but for the custom cursor. */
+  left: -22px;
+  width: 50px;
+  height: 50px;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translate(50vw, 50vh);
+  transition: all 0.35s linear;
+  z-index: 2;
+}
+
+#crosshair-container .borders {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-image: url(assets/brace.svg) 50 50;
+  border-style: inset;
+  border-image-width: 50px;
+  border-width: 1px;
+  will-change: transform;
+  transition: all 0.35s linear;
+}
+
+#crosshair-container .vertical-top {
+  position: absolute;
+  top: calc(-100vh + 25%);
+  left: 50%;
+  width: 0px;
+  height: 100vh;
+  border-left: 1px dotted #64ffda;
+}
+
+#crosshair-container .vertical-bottom {
+  position: absolute;
+  top: calc(75%);
+  left: 50%;
+  width: 0px;
+  height: 100vh;
+  border-left: 1px dotted #64ffda;
+}
+
+#crosshair-container .horizontal-left {
+  position: absolute;
+  top: 50%;
+  left: calc(-100vw + 25%);
+  width: 100vw;
+  height: 0px;
+  border-top: 1px dotted #64ffda;
+}
+
+#crosshair-container .horizontal-right {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  width: 100vw;
+  height: 0px;
+  border-top: 1px dotted #64ffda;
+}
+
+
+/* =============================================================================
+
+============================================================================= */
+/* https://codepen.io/marcuswallberg/pen/ggbZQJ?editors=1100 */
+
+
+#scifi-circle-svg {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.st0, .st1, .st2, .st3 {
+  fill: none;
+  stroke: #64ffda;
+  stroke-width: 42;
+  stroke-miterlimit: 10;
+}
+
+.st0 { stroke-dasharray: 12.1947,12.1947,12.1947,12.1947,12.1947,12.1947; }
+
+.st1 { stroke-dasharray: 50,90,200,30,40,0; }
+
+.st2 {
+  stroke-linecap: square;
+  stroke-dasharray: 120, 20, 110, 20, 140;
+}
+
+.st3 {
+  stroke-width: 16;
+  stroke-linecap: square;
+}
+
+
+/* =============================================================================
+                                Media Queries
+============================================================================= */
+/* Mobile-first media queries that follow Bootstrap's breakpoints.  */
+
+
+@media (min-width: 576px) {}
+@media (min-width: 768px) {}
+@media (min-width: 992px) {}
+@media (min-width: 1200px){}
+@media (min-width: 1400px){ main > .container-fluid { max-width: 1400px; }}

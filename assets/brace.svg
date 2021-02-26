@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="102px" viewBox="0 0 102 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>brace</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="brace" transform="translate(1.000000, 1.000000)" stroke="#64FFDA">
+            <polyline points="0 30 0 0 30 0"></polyline>
+            <g id="brace-link" transform="translate(85.000000, 15.000000) rotate(90.000000) translate(-85.000000, -15.000000) translate(70.000000, 0.000000)">
+                <polyline id="brace" points="0 30 0 0 30 0"></polyline>
+            </g>
+            <g id="brace-link" transform="translate(85.000000, 85.000000) rotate(180.000000) translate(-85.000000, -85.000000) translate(70.000000, 70.000000)">
+                <polyline id="brace" points="0 30 0 0 30 0"></polyline>
+            </g>
+            <g id="brace-link" transform="translate(15.000000, 85.000000) rotate(-90.000000) translate(-15.000000, -85.000000) translate(0.000000, 70.000000)">
+                <polyline id="brace" points="0 30 0 0 30 0"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>
