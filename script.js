@@ -50,8 +50,10 @@ function animateCrosshair(e){
 
 
 document.onclick = animateCrosshair;
-document.ontouchstart = function(e){
-  e.preventDefault(); // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+document.ontouchmove = function(e){
+  // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+  // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
+  e.preventDefault();
   e.stopPropagation();
   animateCrosshair(e);
 };
