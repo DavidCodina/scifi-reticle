@@ -50,3 +50,4 @@ function animateCrosshair(e){
 
 
 document.querySelector('MAIN').addEventListener('click', animateCrosshair);
+setTimeout(function(){ document.querySelector('#intro-message').style.display = 'none';}, 5000);
