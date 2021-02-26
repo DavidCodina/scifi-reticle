@@ -18,7 +18,7 @@ html {
 body {
   background-color: var(--body-color);
   color: #64ffda;
-  min-height: 100vh; /* Add to template */
+  min-height: 100vh;
   width: 100%;
   overflow-x:hidden; /* Safari needs this to prevent horizontal scrolling. */
 }
@@ -255,7 +255,6 @@ a.underline-from-left {
 /* =============================================================================
 
 ============================================================================= */
-/* https://codepen.io/marcuswallberg/pen/ggbZQJ?editors=1100 */
 
 
 #scifi-circle-svg {
