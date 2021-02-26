@@ -101,13 +101,13 @@ function animateCrosshair(e){
 
 
 
-document.querySelector('BODY').addEventListener('touchstart', function(e){
+document.querySelector('MAIN').addEventListener('touchstart', function(e){
   e.preventDefault(); //Won't work, but doesn't hurt.
-  e.stopPropagation(); 
+  // e.stopPropagation(); //Won't work either.
   animateCrosshair(e);
 });
 
-document.querySelector('BODY').addEventListener('click', animateCrosshair);
+document.querySelector('MAIN').addEventListener('click', animateCrosshair);
 
 
 setTimeout(function(){ document.querySelector('#intro-message').style.display = 'none';}, 5000);
