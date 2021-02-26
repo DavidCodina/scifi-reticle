@@ -52,6 +52,7 @@ function animateCrosshair(e){
 document.onclick = animateCrosshair;
 document.ontouchstart = function(e){
   e.preventDefault(); // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+  e.stopPropagation();
   animateCrosshair(e);
 };
 
