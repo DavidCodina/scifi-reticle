@@ -59,41 +59,28 @@ function animateCrosshair(e){
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events
 // https://stackoverflow.com/questions/6780965/why-onclick-event-suppressed-when-preventdefault-is-called-for-the-touchstart
 
-// Solution 1:
-// document.addEventListener('click', animateCrosshair, false);
-
-
-// Solution 2:
-// document.addEventListener('touchmove', function(e){
-//   e.preventDefault();
-//   animateCrosshair(e);
-// }, false);
-//
-// document.addEventListener('click', animateCrosshair, false);
-
-
-// Solution 3:
-// document.addEventListener('touchstart', function(){
-//   e.preventDefault();
-//   animateCrosshair(e);
-// });
-//
-// document.addEventListener('click', animateCrosshair);
-
-
 
 // https://makandracards.com/makandra/51956-event-order-when-clicking-on-touch-devices
 // Note that an event handler bound to a parent element (here document) can NOT cancel the sequence:
 // document.addEventListener('touchstart', (event) => event.preventDefault());
+// This this won't work:
+// document.querySelector('BODY').addEventListener('touchstart', function(e){
+//   e.preventDefault();
+//   animateCrosshair(e);
+// });
+//
+// document.querySelector('BODY').addEventListener('click', function(e){
+//   animateCrosshair(e);
+// });
 
-document.querySelector('BODY').addEventListener('touchstart', function(e){
-  console.log("touchstart");
+
+
+document.querySelector('BODY').addEventListener('touchmove', function(e){
   e.preventDefault();
   animateCrosshair(e);
 });
 
 document.querySelector('BODY').addEventListener('click', function(e){
-  console.log("click");
   animateCrosshair(e);
 });
 
