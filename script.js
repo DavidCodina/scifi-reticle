@@ -10,8 +10,7 @@ const previousPosition   = { x: 0, y: 0 };
 
 
 
-
-window.onclick = function(e){
+function animateCrosshair(e){
   crosshairContainer.style.transition = 'all 0.35s linear';
   crosshairContainer.style.transform  = `translate(${e.pageX}px, ${e.pageY - window.scrollY}px)`;
   crosshairContainer.style.opacity    = '1';
@@ -45,5 +44,15 @@ window.onclick = function(e){
 
 
 
-setTimeout(function(){ document.querySelector('#intro-message').style.opacity = '0';   }, 4000);
+document.onclick = animateCrosshair;
+document.ontouchstart = function(e){
+  e.preventDefault(); // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+  animateCrosshair(e);
+}
+
+
+
+
+
+
 setTimeout(function(){ document.querySelector('#intro-message').style.display = 'none';}, 5000);
